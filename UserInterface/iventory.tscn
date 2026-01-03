@@ -1,0 +1,318 @@
+[gd_scene load_steps=22 format=3 uid="uid://dftox0iumlh2e"]
+
+[ext_resource type="Script" uid="uid://cpqddx1ye318y" path="res://UserInterface/iventory.gd" id="1_i1m2y"]
+[ext_resource type="Texture2D" uid="uid://brdmlboear456" path="res://Assets/UIAssets/Window/window_header.png" id="1_mbycm"]
+[ext_resource type="FontFile" uid="uid://cavq35b3stlq7" path="res://Assets/Fonts/LibreCaslonText-Bold.ttf" id="2_pf7dj"]
+[ext_resource type="StyleBox" uid="uid://dmwl2x2vbb420" path="res://UserInterface/ui_panel.tres" id="3_yb7bi"]
+[ext_resource type="Texture2D" uid="uid://dr7t1yrg7ce6q" path="res://Assets/UIAssets/Icons/spell_slot_empty.png" id="4_qxvmo"]
+[ext_resource type="PackedScene" uid="uid://ch1vyjkdj16m8" path="res://Player/rig.tscn" id="5_pyknv"]
+[ext_resource type="FontFile" uid="uid://0hkourrmpcgg" path="res://Assets/Fonts/LibreCaslonText-Italic.ttf" id="5_qxvmo"]
+[ext_resource type="Texture2D" uid="uid://cle432lcls3t6" path="res://Assets/UIAssets/Button Small/button_small.png" id="7_cwu87"]
+[ext_resource type="Texture2D" uid="uid://bdtmyt8pav268" path="res://Assets/UIAssets/Button Small/button_small_press.png" id="8_pyknv"]
+[ext_resource type="Texture2D" uid="uid://bm3wfx7uw1q4e" path="res://Assets/UIAssets/Button Small/button_small_hover.png" id="9_j822c"]
+
+[sub_resource type="Gradient" id="Gradient_77cnt"]
+offsets = PackedFloat32Array(0, 0.8, 0.9)
+colors = PackedColorArray(0.1254902, 0.08627451, 0.11372549, 1, 0.67058825, 0.1764706, 0.16470589, 1, 0.6627451, 0.41960785, 0.2, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_qncv5"]
+gradient = SubResource("Gradient_77cnt")
+fill_to = Vector2(0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_yb7bi"]
+font = ExtResource("2_pf7dj")
+font_size = 48
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_54b6e"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+
+[sub_resource type="Sky" id="Sky_s41d2"]
+sky_material = SubResource("ProceduralSkyMaterial_54b6e")
+
+[sub_resource type="Environment" id="Environment_pyknv"]
+background_mode = 2
+sky = SubResource("Sky_s41d2")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="World3D" id="World3D_pyknv"]
+environment = SubResource("Environment_pyknv")
+
+[sub_resource type="LabelSettings" id="LabelSettings_i1m2y"]
+font = ExtResource("2_pf7dj")
+font_size = 26
+font_color = Color(0.9607843, 0.7176471, 0.42352942, 1)
+shadow_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_1kmmq"]
+font = ExtResource("5_qxvmo")
+shadow_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_60r1v"]
+font = ExtResource("2_pf7dj")
+font_size = 26
+font_color = Color(0.9607843, 0.7176471, 0.42352942, 1)
+shadow_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_cwu87"]
+font = ExtResource("2_pf7dj")
+font_size = 26
+
+[node name="Inventory" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_i1m2y")
+
+[node name="BackgroundGradient" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 1925.0
+offset_bottom = 1078.0
+texture = SubResource("GradientTexture2D_qncv5")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_top = 32
+theme_override_constants/margin_right = 32
+theme_override_constants/margin_bottom = 32
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="HeaderTexture" type="TextureRect" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+texture = ExtResource("1_mbycm")
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/HeaderTexture"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Inventory"
+label_settings = SubResource("LabelSettings_yb7bi")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 0
+
+[node name="HeldItems" type="PanelContainer" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(960, 0)
+layout_mode = 2
+theme_override_styles/panel = ExtResource("3_yb7bi")
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(512, 0)
+layout_mode = 2
+stretch = true
+
+[node name="SubViewport" type="SubViewport" parent="MarginContainer/VBoxContainer/HBoxContainer/SubViewportContainer"]
+world_3d = SubResource("World3D_pyknv")
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(512, 868)
+render_target_update_mode = 4
+
+[node name="Rig" parent="MarginContainer/VBoxContainer/HBoxContainer/SubViewportContainer/SubViewport" instance=ExtResource("5_pyknv")]
+
+[node name="Camera3D" type="Camera3D" parent="MarginContainer/VBoxContainer/HBoxContainer/SubViewportContainer/SubViewport"]
+transform = Transform3D(1, 0, 0, 0, 0.99026805, 0.1391731, 0, -0.1391731, 0.99026805, 0, 1.3, 3)
+fov = 45.0
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="MarginContainer/VBoxContainer/HBoxContainer/SubViewportContainer/SubViewport"]
+transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
+shadow_enabled = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(384, 0)
+layout_mode = 2
+
+[node name="CaracterSheet" type="PanelContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = ExtResource("3_yb7bi")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/CaracterSheet"]
+layout_mode = 2
+
+[node name="LevelLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/CaracterSheet/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Level 1"
+label_settings = SubResource("LabelSettings_i1m2y")
+horizontal_alignment = 1
+
+[node name="GridContainer" type="GridContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/CaracterSheet/VBoxContainer"]
+layout_mode = 2
+columns = 2
+
+[node name="Attribute" type="TextureRect" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/CaracterSheet/VBoxContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 6
+texture = ExtResource("4_qxvmo")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/CaracterSheet/VBoxContainer/GridContainer/Attribute"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="AttributeName" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/CaracterSheet/VBoxContainer/GridContainer/Attribute/VBoxContainer"]
+layout_mode = 2
+text = "Strength"
+label_settings = SubResource("LabelSettings_1kmmq")
+horizontal_alignment = 1
+uppercase = true
+
+[node name="StrengthValue" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/CaracterSheet/VBoxContainer/GridContainer/Attribute/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "0"
+label_settings = SubResource("LabelSettings_60r1v")
+horizontal_alignment = 1
+
+[node name="Attribute2" type="TextureRect" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/CaracterSheet/VBoxContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 6
+texture = ExtResource("4_qxvmo")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/CaracterSheet/VBoxContainer/GridContainer/Attribute2"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="AttributeName" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/CaracterSheet/VBoxContainer/GridContainer/Attribute2/VBoxContainer"]
+layout_mode = 2
+text = "Agility"
+label_settings = SubResource("LabelSettings_1kmmq")
+horizontal_alignment = 1
+uppercase = true
+
+[node name="AgilityValue" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/CaracterSheet/VBoxContainer/GridContainer/Attribute2/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "0"
+label_settings = SubResource("LabelSettings_60r1v")
+horizontal_alignment = 1
+
+[node name="Attribute3" type="TextureRect" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/CaracterSheet/VBoxContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 6
+texture = ExtResource("4_qxvmo")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/CaracterSheet/VBoxContainer/GridContainer/Attribute3"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="AttributeName" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/CaracterSheet/VBoxContainer/GridContainer/Attribute3/VBoxContainer"]
+layout_mode = 2
+text = "endurance"
+label_settings = SubResource("LabelSettings_1kmmq")
+horizontal_alignment = 1
+uppercase = true
+
+[node name="EnduranceValue" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/CaracterSheet/VBoxContainer/GridContainer/Attribute3/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "0"
+label_settings = SubResource("LabelSettings_60r1v")
+horizontal_alignment = 1
+
+[node name="Attribute4" type="TextureRect" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/CaracterSheet/VBoxContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 6
+texture = ExtResource("4_qxvmo")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/CaracterSheet/VBoxContainer/GridContainer/Attribute4"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="AttributeName" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/CaracterSheet/VBoxContainer/GridContainer/Attribute4/VBoxContainer"]
+layout_mode = 2
+text = "speed"
+label_settings = SubResource("LabelSettings_1kmmq")
+horizontal_alignment = 1
+uppercase = true
+
+[node name="SpeedValue" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/CaracterSheet/VBoxContainer/GridContainer/Attribute4/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "0"
+label_settings = SubResource("LabelSettings_60r1v")
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/CaracterSheet/VBoxContainer"]
+layout_mode = 2
+
+[node name="AttributeName" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/CaracterSheet/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Attack Damage"
+label_settings = SubResource("LabelSettings_1kmmq")
+horizontal_alignment = 1
+uppercase = true
+
+[node name="AttackValue" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/CaracterSheet/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "0"
+label_settings = SubResource("LabelSettings_60r1v")
+horizontal_alignment = 1
+
+[node name="BackButton" type="TextureButton" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(200, 80)
+layout_mode = 2
+size_flags_horizontal = 8
+focus_mode = 0
+texture_normal = ExtResource("7_cwu87")
+texture_pressed = ExtResource("8_pyknv")
+texture_hover = ExtResource("9_j822c")
+ignore_texture_size = true
+stretch_mode = 4
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/BackButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Back"
+label_settings = SubResource("LabelSettings_cwu87")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/BackButton" to="." method="_on_back_button_pressed"]
