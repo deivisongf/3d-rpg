@@ -10,9 +10,9 @@ const DECAY := 8.0
 
 var jumps_left: int = MAX_JUMPS
 
+var gravity: float = ProjectSettings.get_setting("physics/3d/default_gravity")
 # Stores the x/y direction the player is tryng to look in
 var _look := Vector2.ZERO
-
 # Stores the direction the player moves when attack
 var _attack_direction := Vector3.ZERO
 
