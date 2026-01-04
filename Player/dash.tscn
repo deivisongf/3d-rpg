@@ -35,6 +35,7 @@ one_shot = true
 
 [node name="GPUParticles3D" type="GPUParticles3D" parent="."]
 cast_shadow = 0
+emitting = false
 amount = 64
 lifetime = 0.5
 process_material = SubResource("ParticleProcessMaterial_lt0iu")
