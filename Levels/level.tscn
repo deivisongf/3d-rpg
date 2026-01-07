@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://cr4654fn6luyn"]
+[gd_scene load_steps=29 format=3 uid="uid://cr4654fn6luyn"]
 
 [ext_resource type="PackedScene" uid="uid://du181bgmvchew" path="res://Assets/3D_Assets/Environment/Path_Stepping_Stone_Env_01.glb" id="1_dvejp"]
 [ext_resource type="PackedScene" uid="uid://dc050cjfq6j4r" path="res://Player/player.tscn" id="1_s41d2"]
@@ -20,6 +20,9 @@
 [ext_resource type="PackedScene" uid="uid://dsksvrbgdob3w" path="res://Assets/3D_Assets/Environment/Lamppost_Furn.glb" id="15_8hqpc"]
 [ext_resource type="PackedScene" uid="uid://c6nf11804l5wg" path="res://Assets/3D_Assets/Environment/Fire_Pit_Env.glb" id="16_jmcc3"]
 [ext_resource type="PackedScene" uid="uid://gtdpg5b6stch" path="res://Assets/3D_Assets/Environment/Barrel_Wooden_Prop.glb" id="17_jmcc3"]
+[ext_resource type="PackedScene" uid="uid://klhlijan6roi" path="res://Interactible/chest.tscn" id="18_fw3l5"]
+[ext_resource type="PackedScene" uid="uid://dw61d2bavcrlm" path="res://UserInterface/currency_icon.tscn" id="19_wjjle"]
+[ext_resource type="PackedScene" uid="uid://cq32svma1v2us" path="res://UserInterface/armor_icon.tscn" id="20_1sae0"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_54b6e"]
 sky_top_color = Color(0.1375, 0.31625003, 0.55, 1)
@@ -55,6 +58,7 @@ environment = SubResource("Environment_gtnvv")
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
 shadow_enabled = true
+directional_shadow_blend_splits = true
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.10324478, -0.24993896, -0.19486237)
@@ -269,6 +273,17 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.114096, 1.0570463, -6.3785
 
 [node name="Barrel_Wooden_Prop7" parent="NavigationRegion3D/Decorations" instance=ExtResource("17_jmcc3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.300213, 1.0570463, -5.976385)
+
+[node name="Interactible" type="Node3D" parent="NavigationRegion3D"]
+
+[node name="Chest" parent="NavigationRegion3D/Interactible" instance=ExtResource("18_fw3l5")]
+transform = Transform3D(-0.052928545, 0, 0.9985983, 0, 1, 0, -0.9985983, 0, -0.052928545, 0, 0.5000001, -8.43248)
+
+[node name="CurrencyIcon" parent="NavigationRegion3D/Interactible/Chest" instance=ExtResource("19_wjjle")]
+visible = false
+
+[node name="ArmorIcon" parent="NavigationRegion3D/Interactible/Chest" instance=ExtResource("20_1sae0")]
+visible = false
 
 [node name="Player" parent="." instance=ExtResource("1_s41d2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)

@@ -18,13 +18,11 @@ var current_health: float:
 func update_max_health(max_hp_in: float) -> void:
 	max_health = max_hp_in
 	current_health = max_health
-	printt("Health changed", max_health, current_health)
 	
 func take_damage(damage_in: float, is_critical: bool) -> void:
 	var damage = damage_in
 	if is_critical:
 		damage = damage * 2.0
-		print("critical hit")
 		VfxManager.spawn_damage_number(damage, Color.RED, body.global_position)
 	else:
 		VfxManager.spawn_damage_number(damage, Color.WHITE, body.global_position)
