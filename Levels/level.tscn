@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://cr4654fn6luyn"]
+[gd_scene load_steps=32 format=3 uid="uid://cr4654fn6luyn"]
 
 [ext_resource type="PackedScene" uid="uid://du181bgmvchew" path="res://Assets/3D_Assets/Environment/Path_Stepping_Stone_Env_01.glb" id="1_dvejp"]
 [ext_resource type="PackedScene" uid="uid://dc050cjfq6j4r" path="res://Player/player.tscn" id="1_s41d2"]
@@ -23,6 +23,9 @@
 [ext_resource type="PackedScene" uid="uid://klhlijan6roi" path="res://Interactible/chest.tscn" id="18_fw3l5"]
 [ext_resource type="PackedScene" uid="uid://dw61d2bavcrlm" path="res://UserInterface/currency_icon.tscn" id="19_wjjle"]
 [ext_resource type="PackedScene" uid="uid://cq32svma1v2us" path="res://UserInterface/armor_icon.tscn" id="20_1sae0"]
+[ext_resource type="PackedScene" uid="uid://5sqtb4c7kl8s" path="res://UserInterface/weapon_icon.tscn" id="21_o8jhj"]
+[ext_resource type="PackedScene" uid="uid://ctmdmtykm1heh" path="res://UserInterface/shield_icon.tscn" id="22_nflnv"]
+[ext_resource type="PackedScene" uid="uid://cucid3eir3dv7" path="res://Assets/3D_Assets/Character/Gear/Tall_Shield.glb" id="23_3kmy4"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_54b6e"]
 sky_top_color = Color(0.1375, 0.31625003, 0.55, 1)
@@ -285,6 +288,17 @@ visible = false
 [node name="ArmorIcon" parent="NavigationRegion3D/Interactible/Chest" instance=ExtResource("20_1sae0")]
 visible = false
 
+[node name="Chest2" parent="NavigationRegion3D/Interactible" instance=ExtResource("18_fw3l5")]
+transform = Transform3D(-0.9999824, 0, 0.005934116, 0, 1, 0, -0.005934116, 0, -0.9999824, -22.198029, 0.5, 0)
+
+[node name="WeaponIcon" parent="NavigationRegion3D/Interactible/Chest2" instance=ExtResource("21_o8jhj")]
+visible = false
+
+[node name="ShieldIcon" parent="NavigationRegion3D/Interactible/Chest2" instance=ExtResource("22_nflnv")]
+visible = false
+protection = 15
+item_model = ExtResource("23_3kmy4")
+
 [node name="Player" parent="." instance=ExtResource("1_s41d2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
 
@@ -292,15 +306,19 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
 
 [node name="Enemy" parent="Enemies" instance=ExtResource("6_t80w2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.785967, 1.5, -15.341896)
+speed = 0.0
 
 [node name="Enemy2" parent="Enemies" instance=ExtResource("6_t80w2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.363224, 1.5, -15.341896)
+speed = 0.0
 
 [node name="Enemy3" parent="Enemies" instance=ExtResource("6_t80w2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.785967, 1.5, -13.3054285)
+speed = 0.0
 
 [node name="Enemy4" parent="Enemies" instance=ExtResource("6_t80w2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.303926, 1.5, -13.28137)
+speed = 0.0
 
 [node name="VoxelGI" type="VoxelGI" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0)

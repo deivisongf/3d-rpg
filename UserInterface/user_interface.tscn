@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://bmrtrhg0x8qgx"]
+[gd_scene load_steps=16 format=3 uid="uid://bmrtrhg0x8qgx"]
 
 [ext_resource type="Script" uid="uid://b7gxptlrvy4wp" path="res://UserInterface/user_interface.gd" id="1_cp462"]
 [ext_resource type="Texture2D" uid="uid://rrlv1llphnih" path="res://Assets/UIAssets/Unitframe/HealthBarUnder.png" id="1_v7due"]
@@ -7,6 +7,7 @@
 [ext_resource type="FontFile" uid="uid://cavq35b3stlq7" path="res://Assets/Fonts/LibreCaslonText-Bold.ttf" id="3_mm0wo"]
 [ext_resource type="Texture2D" uid="uid://ca2vk2wi4kmwc" path="res://Assets/UIAssets/Unitframe/BlueBar.png" id="4_l8ojb"]
 [ext_resource type="PackedScene" uid="uid://dftox0iumlh2e" path="res://UserInterface/iventory.tscn" id="7_l8ojb"]
+[ext_resource type="PackedScene" uid="uid://ccr8g8o5udd67" path="res://UserInterface/loot_container.tscn" id="8_7061l"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_cp462"]
 font = ExtResource("3_mm0wo")
@@ -218,3 +219,6 @@ libraries = {
 &"": SubResource("AnimationLibrary_6v6ea")
 }
 autoplay = "RESET"
+
+[node name="LootContainer" parent="." instance=ExtResource("8_7061l")]
+layout_mode = 1
