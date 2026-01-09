@@ -1,43 +1,47 @@
 [gd_scene load_steps=10 format=3 uid="uid://ccr8g8o5udd67"]
 
-[ext_resource type="Script" uid="uid://d3udnolpxhbsj" path="res://UserInterface/loot_container.gd" id="1_75ib3"]
-[ext_resource type="StyleBox" uid="uid://dmwl2x2vbb420" path="res://UserInterface/ui_panel.tres" id="1_b72b8"]
-[ext_resource type="Texture2D" uid="uid://brdmlboear456" path="res://Assets/UIAssets/Window/window_header.png" id="2_75ib3"]
-[ext_resource type="FontFile" uid="uid://cavq35b3stlq7" path="res://Assets/Fonts/LibreCaslonText-Bold.ttf" id="3_awr2t"]
-[ext_resource type="Texture2D" uid="uid://cle432lcls3t6" path="res://Assets/UIAssets/Button Small/button_small.png" id="5_sl6j0"]
-[ext_resource type="Texture2D" uid="uid://bdtmyt8pav268" path="res://Assets/UIAssets/Button Small/button_small_press.png" id="6_fwdqy"]
-[ext_resource type="Texture2D" uid="uid://bm3wfx7uw1q4e" path="res://Assets/UIAssets/Button Small/button_small_hover.png" id="7_0kjyu"]
+[ext_resource type="Script" uid="uid://d3udnolpxhbsj" path="res://UserInterface/loot_container_display.gd" id="1_fcha5"]
+[ext_resource type="StyleBox" uid="uid://dmwl2x2vbb420" path="res://UserInterface/ui_panel.tres" id="2_cbhdc"]
+[ext_resource type="Texture2D" uid="uid://brdmlboear456" path="res://Assets/UIAssets/Window/window_header.png" id="3_5h6cm"]
+[ext_resource type="FontFile" uid="uid://cavq35b3stlq7" path="res://Assets/Fonts/LibreCaslonText-Bold.ttf" id="4_katg3"]
+[ext_resource type="Texture2D" uid="uid://cle432lcls3t6" path="res://Assets/UIAssets/Button Small/button_small.png" id="5_jv0ai"]
+[ext_resource type="Texture2D" uid="uid://bdtmyt8pav268" path="res://Assets/UIAssets/Button Small/button_small_press.png" id="6_jfp4v"]
+[ext_resource type="Texture2D" uid="uid://bm3wfx7uw1q4e" path="res://Assets/UIAssets/Button Small/button_small_hover.png" id="7_ddvvd"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_1ymqo"]
-font = ExtResource("3_awr2t")
+font = ExtResource("4_katg3")
 font_size = 32
 
 [sub_resource type="LabelSettings" id="LabelSettings_1j40c"]
-font = ExtResource("3_awr2t")
+font = ExtResource("4_katg3")
 font_size = 26
 
-[node name="LootContainer" type="CenterContainer"]
+[node name="LootContainerDisplay" type="CenterContainer"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = -113.0
+offset_top = -24.0
+offset_right = -113.0
+offset_bottom = -24.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_75ib3")
+script = ExtResource("1_fcha5")
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
 layout_mode = 2
-theme_override_styles/panel = ExtResource("1_b72b8")
+theme_override_styles/panel = ExtResource("2_cbhdc")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer"]
 layout_mode = 2
 
 [node name="TitleTexture" type="TextureRect" parent="PanelContainer/VBoxContainer"]
 layout_mode = 2
-texture = ExtResource("2_75ib3")
+texture = ExtResource("3_5h6cm")
 expand_mode = 5
 stretch_mode = 4
 
-[node name="Label" type="Label" parent="PanelContainer/VBoxContainer/TitleTexture"]
+[node name="TitleLabel" type="Label" parent="PanelContainer/VBoxContainer/TitleTexture"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -59,9 +63,9 @@ custom_minimum_size = Vector2(200, 80)
 layout_mode = 2
 size_flags_horizontal = 4
 focus_mode = 0
-texture_normal = ExtResource("5_sl6j0")
-texture_pressed = ExtResource("6_fwdqy")
-texture_hover = ExtResource("7_0kjyu")
+texture_normal = ExtResource("5_jv0ai")
+texture_pressed = ExtResource("6_jfp4v")
+texture_hover = ExtResource("7_ddvvd")
 ignore_texture_size = true
 stretch_mode = 4
 

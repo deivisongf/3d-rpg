@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://cr4654fn6luyn"]
+[gd_scene load_steps=34 format=3 uid="uid://cr4654fn6luyn"]
 
 [ext_resource type="PackedScene" uid="uid://du181bgmvchew" path="res://Assets/3D_Assets/Environment/Path_Stepping_Stone_Env_01.glb" id="1_dvejp"]
 [ext_resource type="PackedScene" uid="uid://dc050cjfq6j4r" path="res://Player/player.tscn" id="1_s41d2"]
@@ -26,6 +26,8 @@
 [ext_resource type="PackedScene" uid="uid://5sqtb4c7kl8s" path="res://UserInterface/weapon_icon.tscn" id="21_o8jhj"]
 [ext_resource type="PackedScene" uid="uid://ctmdmtykm1heh" path="res://UserInterface/shield_icon.tscn" id="22_nflnv"]
 [ext_resource type="PackedScene" uid="uid://cucid3eir3dv7" path="res://Assets/3D_Assets/Character/Gear/Tall_Shield.glb" id="23_3kmy4"]
+[ext_resource type="PackedScene" uid="uid://bxn6bhdnn235t" path="res://Assets/3D_Assets/Character/Gear/Broken_Sword.glb" id="24_3kmy4"]
+[ext_resource type="PackedScene" uid="uid://s0wtyf8j8k6t" path="res://Assets/3D_Assets/Character/Gear/Battleaxe.glb" id="25_gaktt"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_54b6e"]
 sky_top_color = Color(0.1375, 0.31625003, 0.55, 1)
@@ -293,11 +295,22 @@ transform = Transform3D(-0.9999824, 0, 0.005934116, 0, 1, 0, -0.005934116, 0, -0
 
 [node name="WeaponIcon" parent="NavigationRegion3D/Interactible/Chest2" instance=ExtResource("21_o8jhj")]
 visible = false
+power = 8
 
 [node name="ShieldIcon" parent="NavigationRegion3D/Interactible/Chest2" instance=ExtResource("22_nflnv")]
 visible = false
 protection = 15
 item_model = ExtResource("23_3kmy4")
+
+[node name="WeaponIcon2" parent="NavigationRegion3D/Interactible/Chest2" instance=ExtResource("21_o8jhj")]
+visible = false
+power = 4
+item_model = ExtResource("24_3kmy4")
+
+[node name="WeaponIcon3" parent="NavigationRegion3D/Interactible/Chest2" instance=ExtResource("21_o8jhj")]
+visible = false
+power = 12
+item_model = ExtResource("25_gaktt")
 
 [node name="Player" parent="." instance=ExtResource("1_s41d2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)

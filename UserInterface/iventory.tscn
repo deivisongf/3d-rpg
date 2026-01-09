@@ -1,10 +1,11 @@
-[gd_scene load_steps=22 format=3 uid="uid://dftox0iumlh2e"]
+[gd_scene load_steps=24 format=3 uid="uid://dftox0iumlh2e"]
 
 [ext_resource type="Script" uid="uid://cpqddx1ye318y" path="res://UserInterface/iventory.gd" id="1_i1m2y"]
 [ext_resource type="Texture2D" uid="uid://brdmlboear456" path="res://Assets/UIAssets/Window/window_header.png" id="1_mbycm"]
 [ext_resource type="FontFile" uid="uid://cavq35b3stlq7" path="res://Assets/Fonts/LibreCaslonText-Bold.ttf" id="2_pf7dj"]
 [ext_resource type="StyleBox" uid="uid://dmwl2x2vbb420" path="res://UserInterface/ui_panel.tres" id="3_yb7bi"]
 [ext_resource type="Texture2D" uid="uid://dr7t1yrg7ce6q" path="res://Assets/UIAssets/Icons/spell_slot_empty.png" id="4_qxvmo"]
+[ext_resource type="Texture2D" uid="uid://csfnkgqd5od7l" path="res://Assets/UIAssets/Window/NumberFrame.png" id="5_j822c"]
 [ext_resource type="PackedScene" uid="uid://ch1vyjkdj16m8" path="res://Player/rig.tscn" id="5_pyknv"]
 [ext_resource type="FontFile" uid="uid://0hkourrmpcgg" path="res://Assets/Fonts/LibreCaslonText-Italic.ttf" id="5_qxvmo"]
 [ext_resource type="Texture2D" uid="uid://cle432lcls3t6" path="res://Assets/UIAssets/Button Small/button_small.png" id="7_cwu87"]
@@ -22,6 +23,11 @@ fill_to = Vector2(0, 1)
 [sub_resource type="LabelSettings" id="LabelSettings_yb7bi"]
 font = ExtResource("2_pf7dj")
 font_size = 48
+
+[sub_resource type="LabelSettings" id="LabelSettings_x0bqe"]
+font = ExtResource("2_pf7dj")
+font_size = 26
+font_color = Color(0.9607843, 0.7176471, 0.42352942, 1)
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_54b6e"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -115,6 +121,33 @@ theme_override_constants/separation = 0
 custom_minimum_size = Vector2(960, 0)
 layout_mode = 2
 theme_override_styles/panel = ExtResource("3_yb7bi")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/HeldItems"]
+layout_mode = 2
+
+[node name="ItemGrid" type="GridContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/HeldItems/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+columns = 7
+
+[node name="GoldFrame" type="TextureRect" parent="MarginContainer/VBoxContainer/HBoxContainer/HeldItems/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+texture = ExtResource("5_j822c")
+
+[node name="GoldLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/HeldItems/VBoxContainer/GoldFrame"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "0g"
+label_settings = SubResource("LabelSettings_x0bqe")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="MarginContainer/VBoxContainer/HBoxContainer"]
 custom_minimum_size = Vector2(512, 0)
@@ -291,6 +324,41 @@ size_flags_horizontal = 3
 text = "0"
 label_settings = SubResource("LabelSettings_60r1v")
 horizontal_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/CaracterSheet/VBoxContainer"]
+layout_mode = 2
+
+[node name="EquipmentLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/CaracterSheet/VBoxContainer"]
+layout_mode = 2
+text = "Equipment"
+label_settings = SubResource("LabelSettings_i1m2y")
+horizontal_alignment = 1
+
+[node name="ItemSlotGrid" type="GridContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/CaracterSheet/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 2
+columns = 2
+
+[node name="WeaponSlot" type="CenterContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/CaracterSheet/VBoxContainer/ItemSlotGrid"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
+
+[node name="ShieldSlot" type="CenterContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/CaracterSheet/VBoxContainer/ItemSlotGrid"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
+
+[node name="ArmorSlot" type="CenterContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/CaracterSheet/VBoxContainer/ItemSlotGrid"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
 
 [node name="BackButton" type="TextureButton" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
 custom_minimum_size = Vector2(200, 80)

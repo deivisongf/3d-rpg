@@ -7,7 +7,7 @@
 [ext_resource type="FontFile" uid="uid://cavq35b3stlq7" path="res://Assets/Fonts/LibreCaslonText-Bold.ttf" id="3_mm0wo"]
 [ext_resource type="Texture2D" uid="uid://ca2vk2wi4kmwc" path="res://Assets/UIAssets/Unitframe/BlueBar.png" id="4_l8ojb"]
 [ext_resource type="PackedScene" uid="uid://dftox0iumlh2e" path="res://UserInterface/iventory.tscn" id="7_l8ojb"]
-[ext_resource type="PackedScene" uid="uid://ccr8g8o5udd67" path="res://UserInterface/loot_container.tscn" id="8_7061l"]
+[ext_resource type="PackedScene" uid="uid://ccr8g8o5udd67" path="res://UserInterface/loot_container_display.tscn" id="8_7061l"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_cp462"]
 font = ExtResource("3_mm0wo")
@@ -220,5 +220,15 @@ libraries = {
 }
 autoplay = "RESET"
 
-[node name="LootContainer" parent="." instance=ExtResource("8_7061l")]
+[node name="LootContainerDisplay" parent="." node_paths=PackedStringArray("iventory") instance=ExtResource("8_7061l")]
 layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -264.0
+offset_top = -227.5
+offset_right = 264.0
+offset_bottom = 227.5
+iventory = NodePath("../Inventory")
