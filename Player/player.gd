@@ -45,6 +45,10 @@ func _ready() -> void:
 	)
 	stats.update_stats.connect(user_interface.update_stats_display)
 	user_interface.update_stats_display()
+	user_interface.inventory.armor_changed.connect(
+		health_component.update_armor_value
+	)
+	SceneTransaction.fade_in()
 
 func _physics_process(delta: float) -> void:
 	
@@ -82,7 +86,7 @@ func _unhandled_input(event: InputEvent) -> void:
 		if event.is_action_pressed("right_click"):
 			rig.travel("Overhead")
 	if event.is_action_pressed("debug_gain_xp"):
-		stats.xp += 1000000
+		stats.xp += 1000000000
 
 func get_movement_direction() -> Vector3:
 	var input_dir := Input.get_vector("move_left", "move_right", "move_forward", "move_back")
@@ -135,7 +139,7 @@ func handle_slashing_physics_frame(delta: float) -> void:
 	velocity.x = _attack_direction.x * attack_move_speed
 	velocity.z = _attack_direction.z * attack_move_speed
 	look_toward_direction(_attack_direction, delta)
-	attack_cast.deal_damage(10.0 + stats.get_damage_modifier(), stats.get_crit_change())
+	attack_cast.deal_damage(user_interface.inventory.get_weapon_value(), stats.get_crit_change())
 		
 func handle_overhead_physics_frame() -> void:
 	if not rig.is_overhead():
@@ -150,7 +154,7 @@ func _on_health_component_defeat() -> void:
 
 
 func _on_rig_heavy_attack() -> void:
-	area_attack.deal_damage(10.0 + stats.get_damage_modifier(), stats.get_crit_change())
+	area_attack.deal_damage(user_interface.inventory.get_weapon_value(), stats.get_crit_change())
 
 func exponential_decay(a: float, b:float, decay:float, delta:float) -> float:
 	return b + (a - b) * exp(-decay * delta)

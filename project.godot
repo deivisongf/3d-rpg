@@ -18,6 +18,8 @@ config/icon="res://icon.svg"
 [autoload]
 
 VfxManager="*res://Autoload/vfx_manager.tscn"
+SceneTransaction="*res://Autoload/scene_transaction.tscn"
+PersistentData="*res://Autoload/persistent_data.tscn"
 
 [display]
 
