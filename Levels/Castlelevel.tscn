@@ -1,5 +1,6 @@
-[gd_scene load_steps=13 format=3 uid="uid://crw30x2a4jwy8"]
+[gd_scene load_steps=14 format=3 uid="uid://crw30x2a4jwy8"]
 
+[ext_resource type="PackedScene" uid="uid://dtljdkolleihi" path="res://Enemy/enemy.tscn" id="7_32sdt"]
 [ext_resource type="PackedScene" uid="uid://bf6bynsx4a287" path="res://Assets/3D_Assets/Environment/Wall_Stone_Gate_Bldg_01.glb" id="8_h0yef"]
 [ext_resource type="PackedScene" uid="uid://w5t4qtpu17kh" path="res://Assets/3D_Assets/Environment/Stone_Wall_Bldg_04.glb" id="9_c7bgh"]
 [ext_resource type="PackedScene" uid="uid://dgoesen5sg84v" path="res://Assets/3D_Assets/Environment/Turret_Square_Bldg_02.glb" id="10_exf0s"]
@@ -201,6 +202,19 @@ transform = Transform3D(-0.5, 0, 0.8660252, 0, 1, 0, -0.8660252, 0, -0.5, -11, 0
 transform = Transform3D(-1, 0, 8.940697e-08, 0, 1, 0, -8.940697e-08, 0, -1, 0, 1.250061, 17)
 
 [node name="Enemies" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, -0.24993896, 5)
+
+[node name="Enemy" parent="Enemies" instance=ExtResource("7_32sdt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.785967, 1.5, -15.341896)
+
+[node name="Enemy2" parent="Enemies" instance=ExtResource("7_32sdt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.363224, 1.5, -15.341896)
+
+[node name="Enemy3" parent="Enemies" instance=ExtResource("7_32sdt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.785967, 1.5, -13.3054285)
+
+[node name="Enemy4" parent="Enemies" instance=ExtResource("7_32sdt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.303926, 1.5, -13.28137)
 
 [node name="VoxelGI" type="VoxelGI" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0)

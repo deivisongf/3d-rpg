@@ -32,7 +32,9 @@ offset_bottom = 40.0
 
 [node name="WeaponIcon" parent="WeaponNode" instance=ExtResource("2_k00sn")]
 layout_mode = 0
-power = 800
+offset_right = 128.0
+offset_bottom = 128.0
+power = 14
 item_model = ExtResource("3_5mcmk")
 
 [node name="ShieldNode" type="Control" parent="."]
@@ -43,6 +45,8 @@ offset_bottom = 40.0
 
 [node name="ShieldIcon" parent="ShieldNode" instance=ExtResource("4_kackq")]
 layout_mode = 0
+offset_right = 128.0
+offset_bottom = 128.0
 protection = 40
 item_model = ExtResource("5_lfvx3")
 
@@ -54,5 +58,7 @@ offset_bottom = 40.0
 
 [node name="ArmorIcon" parent="ArmorNode" instance=ExtResource("6_vom8u")]
 layout_mode = 0
+offset_right = 128.0
+offset_bottom = 128.0
 protection = 40
 armor = 1

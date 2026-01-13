@@ -48,6 +48,8 @@ func _ready() -> void:
 	user_interface.inventory.armor_changed.connect(
 		health_component.update_armor_value
 	)
+	if PersistentData.current_health:
+		health_component.current_health = PersistentData.current_health
 	SceneTransaction.fade_in()
 
 func _physics_process(delta: float) -> void:

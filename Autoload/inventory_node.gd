@@ -1,5 +1,8 @@
 extends Control
 
+var gold := 0
+var current_health := 0
+
 @onready var inventory_node: Control = %InventoryNode
 @onready var weapon_node: Control = %WeaponNode
 @onready var shield_node: Control = %ShieldNode
@@ -20,6 +23,11 @@ func cache_gear(player:  Player) -> void:
 		player.user_interface.inventory.get_armor(),
 		armor_node
 	)
+	gold = player.user_interface.inventory.gold
+	
+func cache_player_data(player: Player) -> void:
+	current_health = player.health_component.current_health
+	
 
 func get_inventory() -> Array:
 	return inventory_node.get_children()
