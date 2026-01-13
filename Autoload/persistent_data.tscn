@@ -1,6 +1,11 @@
-[gd_scene load_steps=2 format=3 uid="uid://b4e0olmbbukgu"]
+[gd_scene load_steps=7 format=3 uid="uid://b4e0olmbbukgu"]
 
 [ext_resource type="Script" uid="uid://birkwpxsfyxmp" path="res://Autoload/inventory_node.gd" id="1_xkn7a"]
+[ext_resource type="PackedScene" uid="uid://5sqtb4c7kl8s" path="res://UserInterface/weapon_icon.tscn" id="2_k00sn"]
+[ext_resource type="PackedScene" uid="uid://s0wtyf8j8k6t" path="res://Assets/3D_Assets/Character/Gear/Battleaxe.glb" id="3_5mcmk"]
+[ext_resource type="PackedScene" uid="uid://ctmdmtykm1heh" path="res://UserInterface/shield_icon.tscn" id="4_kackq"]
+[ext_resource type="PackedScene" uid="uid://cucid3eir3dv7" path="res://Assets/3D_Assets/Character/Gear/Tall_Shield.glb" id="5_lfvx3"]
+[ext_resource type="PackedScene" uid="uid://cq32svma1v2us" path="res://UserInterface/armor_icon.tscn" id="6_vom8u"]
 
 [node name="PersistentData" type="Control"]
 layout_mode = 3
@@ -10,6 +15,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+script = ExtResource("1_xkn7a")
 
 [node name="InventoryNode" type="Control" parent="."]
 unique_name_in_owner = true
@@ -17,4 +23,36 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 mouse_filter = 2
-script = ExtResource("1_xkn7a")
+
+[node name="WeaponNode" type="Control" parent="."]
+unique_name_in_owner = true
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="WeaponIcon" parent="WeaponNode" instance=ExtResource("2_k00sn")]
+layout_mode = 0
+power = 800
+item_model = ExtResource("3_5mcmk")
+
+[node name="ShieldNode" type="Control" parent="."]
+unique_name_in_owner = true
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ShieldIcon" parent="ShieldNode" instance=ExtResource("4_kackq")]
+layout_mode = 0
+protection = 40
+item_model = ExtResource("5_lfvx3")
+
+[node name="ArmorNode" type="Control" parent="."]
+unique_name_in_owner = true
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ArmorIcon" parent="ArmorNode" instance=ExtResource("6_vom8u")]
+layout_mode = 0
+protection = 40
+armor = 1

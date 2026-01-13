@@ -105,5 +105,8 @@ func get_armor_value() -> float:
 	return armor
 
 func load_items_from_persistant_data() -> void:
-	for item in PersistentData.get_child(0).get_inventory():
+	for item in PersistentData.get_inventory():
 		add_item(item)
+	for item in PersistentData.get_equipped_items():
+		add_item(item)
+		interact(item)
